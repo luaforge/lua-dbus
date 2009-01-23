@@ -1,0 +1,5 @@
+Nothing much to read here yet. Two important points  though:
+* this binding is in no way usable at this stage. I don't even provide a makefile, this is just an "initial commit" version.
+* if you want to know what this is about, read the D-Bus specification <http://dbus.freedesktop.org/doc/dbus-specification.html>
+and the D-Bus API <http://dbus.freedesktop.org/doc/dbus/api/html/index.html>
+

@@ -1,0 +1,247 @@
+# depslib dependency file v1.0
+1216539168 source:/home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/main.c
+	<lua.h>
+	<lauxlib.h>
+
+1199374875 /usr/include/lua5.1/lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1210513442 /usr/include/lua5.1/luaconf.h
+	<limits.h>
+	<stddef.h>
+	<unistd.h>
+	<io.h>
+	<stdio.h>
+	<stdio.h>
+	<readline/readline.h>
+	<readline/history.h>
+	<assert.h>
+	<math.h>
+	<unistd.h>
+
+1216539949 source:/home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/dbus_server.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	"utils.h"
+
+1198760545 /usr/include/lua5.1/lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus.h
+	<dbus/dbus-arch-deps.h>
+	<dbus/dbus-address.h>
+	<dbus/dbus-bus.h>
+	<dbus/dbus-connection.h>
+	<dbus/dbus-errors.h>
+	<dbus/dbus-macros.h>
+	<dbus/dbus-message.h>
+	<dbus/dbus-misc.h>
+	<dbus/dbus-pending-call.h>
+	<dbus/dbus-protocol.h>
+	<dbus/dbus-server.h>
+	<dbus/dbus-shared.h>
+	<dbus/dbus-signature.h>
+	<dbus/dbus-threads.h>
+	<dbus/dbus-types.h>
+
+1223389398 /usr/lib/dbus-1.0/include/dbus/dbus-arch-deps.h
+	<dbus/dbus-macros.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-macros.h
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-address.h
+	<dbus/dbus-types.h>
+	<dbus/dbus-errors.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-types.h
+	<stddef.h>
+	<dbus/dbus-arch-deps.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-errors.h
+	<dbus/dbus-macros.h>
+	<dbus/dbus-types.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-bus.h
+	<dbus/dbus-connection.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-connection.h
+	<dbus/dbus-errors.h>
+	<dbus/dbus-memory.h>
+	<dbus/dbus-message.h>
+	<dbus/dbus-shared.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-memory.h
+	<dbus/dbus-macros.h>
+	<stddef.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-message.h
+	<dbus/dbus-macros.h>
+	<dbus/dbus-types.h>
+	<dbus/dbus-arch-deps.h>
+	<dbus/dbus-memory.h>
+	<dbus/dbus-errors.h>
+	<stdarg.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-shared.h
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-misc.h
+	<dbus/dbus-types.h>
+	<dbus/dbus-errors.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-pending-call.h
+	<dbus/dbus-macros.h>
+	<dbus/dbus-types.h>
+	<dbus/dbus-connection.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-protocol.h
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-server.h
+	<dbus/dbus-errors.h>
+	<dbus/dbus-message.h>
+	<dbus/dbus-connection.h>
+	<dbus/dbus-protocol.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-signature.h
+	<dbus/dbus-macros.h>
+	<dbus/dbus-types.h>
+	<dbus/dbus-errors.h>
+
+1223389398 /usr/include/dbus-1.0/dbus/dbus-threads.h
+	<dbus/dbus-macros.h>
+	<dbus/dbus-types.h>
+
+1216564308 /home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/utils.h
+
+1216565197 source:/home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/utils.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	<ctype.h>
+	"utils.h"
+
+1216565910 source:/home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/dbus_bus.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	"utils.h"
+
+1216541560 source:/home/benoit/Projets/LuaDBusBinding/Lua D-Bus Binding/dbus_connection.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	"utils.h"
+
+1232208121 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/dbus_bus.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	"utils.h"
+
+1232212595 /home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/utils.h
+
+1232208135 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/dbus_connection.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	"utils.h"
+
+1217168971 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/dbus_server.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	"utils.h"
+
+1217106922 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/main.c
+	<lua.h>
+	<lauxlib.h>
+
+1232212595 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/utils.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	<ctype.h>
+	"utils.h"
+
+1232213245 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/dbus_connection_shared.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	"utils.h"
+
+1217168971 source:/home/benoit/Projets/LuaDBusBinding/Lua_DBus_Binding/dbus_message.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	"utils.h"
+
+1232742207 source:/home/benoit/Projets/Lua_DBus_Binding/dbus_bus.c
+	<lua.h>
+	<lauxlib.h>
+	<string.h>
+	"utils.h"
+	"dbus_connection_shared.h"
+
+1232743893 /home/benoit/Projets/Lua_DBus_Binding/utils.h
+	<dbus/dbus.h>
+
+1232742208 source:/home/benoit/Projets/Lua_DBus_Binding/dbus_connection.c
+	<lua.h>
+	<lauxlib.h>
+	"utils.h"
+	"dbus_connection_shared.h"
+
+1232743245 source:/home/benoit/Projets/Lua_DBus_Binding/dbus_connection_shared.c
+	<lua.h>
+	<lauxlib.h>
+	<memory.h>
+	"utils.h"
+	"dbus_connection_shared.h"
+
+1232744927 source:/home/benoit/Projets/Lua_DBus_Binding/dbus_message.c
+	<lua.h>
+	<lauxlib.h>
+	<string.h>
+	"utils.h"
+
+1232742303 source:/home/benoit/Projets/Lua_DBus_Binding/dbus_server.c
+	<lua.h>
+	<lauxlib.h>
+	"utils.h"
+
+1232743474 source:/home/benoit/Projets/Lua_DBus_Binding/main.c
+	<lua.h>
+	<lauxlib.h>
+	"utils.h"
+	"dbus_bus.h"
+	"dbus_connection.h"
+	"dbus_message.h"
+	"dbus_server.h"
+
+1232743800 source:/home/benoit/Projets/Lua_DBus_Binding/utils.c
+	<lua.h>
+	<lauxlib.h>
+	<dbus/dbus.h>
+	<string.h>
+	<ctype.h>
+	"utils.h"
+
+1232315545 /home/benoit/Projets/Lua_DBus_Binding/dbus_connection_shared.h
+
+1232309525 /home/benoit/Projets/Lua_DBus_Binding/dbus_bus.h
+
+1232744540 /home/benoit/Projets/Lua_DBus_Binding/dbus_message.h
+
+1232309804 /home/benoit/Projets/Lua_DBus_Binding/dbus_server.h
+
+1232310329 /home/benoit/Projets/Lua_DBus_Binding/dbus_connection.h
+

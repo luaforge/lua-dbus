@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="../../../../../usr/include/dbus-1.0/dbus/dbus-protocol.h" open="1" top="0" tabpos="11">
+		<Cursor position="7777" topLine="167" />
+	</File>
+	<File name="../../../../../usr/include/dbus-1.0/dbus/dbus-server.h" open="1" top="0" tabpos="5">
+		<Cursor position="996" topLine="3" />
+	</File>
+	<File name="../../../../../usr/include/dbus-1.0/dbus/dbus.h" open="1" top="0" tabpos="6">
+		<Cursor position="1133" topLine="21" />
+	</File>
+	<File name="dbus_bus.c" open="1" top="0" tabpos="2">
+		<Cursor position="7072" topLine="138" />
+	</File>
+	<File name="dbus_bus.h" open="1" top="0" tabpos="8">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="dbus_connection.c" open="1" top="0" tabpos="12">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="dbus_connection.h" open="1" top="0" tabpos="11">
+		<Cursor position="169" topLine="0" />
+	</File>
+	<File name="dbus_connection_shared.c" open="1" top="0" tabpos="3">
+		<Cursor position="11561" topLine="233" />
+	</File>
+	<File name="dbus_connection_shared.h" open="1" top="0" tabpos="6">
+		<Cursor position="300" topLine="0" />
+	</File>
+	<File name="dbus_message.c" open="1" top="0" tabpos="4">
+		<Cursor position="11026" topLine="256" />
+	</File>
+	<File name="dbus_message.h" open="1" top="0" tabpos="10">
+		<Cursor position="411" topLine="0" />
+	</File>
+	<File name="dbus_server.c" open="1" top="0" tabpos="5">
+		<Cursor position="4797" topLine="107" />
+	</File>
+	<File name="dbus_server.h" open="1" top="0" tabpos="9">
+		<Cursor position="207" topLine="0" />
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1">
+		<Cursor position="1358" topLine="20" />
+	</File>
+	<File name="utils.c" open="1" top="0" tabpos="7">
+		<Cursor position="23792" topLine="626" />
+	</File>
+	<File name="utils.h" open="1" top="0" tabpos="13">
+		<Cursor position="542" topLine="0" />
+	</File>
+	<File name="../../../../../usr/include/lua5.1/lauxlib.h" open="1" top="0" tabpos="3">
+		<Cursor position="2561" topLine="53" />
+	</File>
+	<File name="../../../../../usr/include/lua5.1/lua.h" open="1" top="0" tabpos="2">
+		<Cursor position="2278" topLine="99" />
+	</File>
+	<File name="../../../../../usr/include/lua5.1/lua.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="191" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
