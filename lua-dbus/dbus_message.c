@@ -62,6 +62,24 @@ DBusMessage * cast_to_dbus_message( lua_State * const _L,  int const _ndx)
 //################################################################################
 //################################################################################
 
+int bind_dbus_message_copy( lua_State * const _L)
+{
+	utils_check_nargs( _L, 1);
+	DBusMessage * const message = cast_to_dbus_message( _L, 1);
+	DBusMessage * const copy = dbus_message_copy( message);
+	if( copy == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, copy);
+	}
+}
+
+//################################################################################
+
 int bind_dbus_message_get_type( lua_State * const _L)
 {
 	utils_check_nargs( _L, 1);
@@ -88,7 +106,15 @@ int bind_dbus_message_new( lua_State * const _L)
 	utils_check_nargs( _L, 1);
 	int message_type = utils_convert_to_message_type( _L, 1);
 	DBusMessage *message = dbus_message_new( message_type);
-	return push_dbus_message( _L, message);
+	if( message == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, message);
+	}
 }
 
 //################################################################################
@@ -100,7 +126,15 @@ int bind_dbus_message_new_error( lua_State * const _L)
 	char const * const error_name = lua_tostring( _L, 2);
 	char const * const error_message = lua_tostring( _L, 3);
 	DBusMessage *message = dbus_message_new_error( reply_to, error_name, error_message);
-	return push_dbus_message( _L, message);
+	if( message == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, message);
+	}
 }
 
 //################################################################################
@@ -141,34 +175,45 @@ int bind_dbus_message_new_method_call( lua_State * const _L)
 		struct Info
 		{
 			int ndx;
+			int acceptNil;
 			char const *name;
 			char const **dest;
-			int (* fn)(lua_State * const, char const*);
+			int (* validation_func)(lua_State * const, char const*);
 		};
 		struct Info infos[4] =
 		{
-			{ 1, "destination", &destination, utils_object_path_name_is_valid},
-			{ 2, "path", &path, utils_object_path_name_is_valid},
-			{ 3, "interface", &interface, utils_interface_name_is_valid},
-			{ 4, "method", &method, utils_member_name_is_valid},
+			{ 1, 1, "destination", &destination, utils_object_path_name_is_valid},
+			{ 2, 0, "path", &path, utils_object_path_name_is_valid},
+			{ 3, 1, "interface", &interface, utils_interface_name_is_valid},
+			{ 4, 0, "method", &method, utils_member_name_is_valid},
 		} ;
 		int i;
 		for( i = 0; i < 4 ; ++ i)
 		{
 			int const ndx = infos[i].ndx;
-			if ( !lua_isstring( _L, ndx) )
+			if( lua_isnil( _L, ndx))
+			{
+				if( infos[i].acceptNil ==0)
+				{
+					char buffer[64];
+					sprintf( buffer, "%s can't be Nil", infos[i].name);
+					return luaL_argcheck( _L, 0, ndx, buffer), 0;
+				}
+				*infos[i].dest = 0x0;
+			}
+			if( !lua_isstring( _L, ndx) )
 			{
 				char buffer[64];
 				sprintf( buffer, "%s must be a string", infos[i].name);
-				luaL_argcheck( _L, 0, ndx, buffer);
+				return luaL_argcheck( _L, 0, ndx, buffer), 0;
 			}
 			char const * const string = lua_tostring( _L, ndx);
-			if ( infos[i].fn( _L, string) )
+			if( infos[i].validation_func( _L, string) != 0)
 				*infos[i].dest = string;
 		}
 	}
 	DBusMessage *message = dbus_message_new_method_call( destination, path, interface, method);
-	if (message == 0x0)
+	if( message == 0x0)
 	{
 		lua_pushnil( _L);
 		return 1;
@@ -259,7 +304,37 @@ int bind_dbus_message_new_signal( lua_State * const _L)
 		}
 	}
 	DBusMessage *message = dbus_message_new_signal( path, interface, name);
-	return push_dbus_message( _L, message);
+	if( message == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, message);
+	}
+}
+
+//################################################################################
+
+int bind_dbus_message_set_auto_start( lua_State * const _L)
+{
+	utils_check_nargs( _L, 2);
+	DBusMessage * const message = cast_to_dbus_message( _L, 1);
+	int const autostart = lua_toboolean( _L, 2);
+	dbus_message_set_auto_start( message, autostart);
+	return 0;
+}
+
+//################################################################################
+
+int bind_dbus_message_set_no_reply( lua_State * const _L)
+{
+	utils_check_nargs( _L, 2);
+	DBusMessage * const message = cast_to_dbus_message( _L, 1);
+	int const autostart = lua_toboolean( _L, 2);
+	dbus_message_set_no_reply( message, autostart);
+	return 0;
 }
 
 //################################################################################
@@ -283,7 +358,10 @@ int finalize_dbus_message( lua_State * const _L)
 static luaL_Reg gMessageMeta[] =
 {
 	{ "__gc", finalize_dbus_message },
+	{ "copy", bind_dbus_message_copy } ,
 	{ "get_type", bind_dbus_message_get_type } ,
+	{ "set_auto_start", bind_dbus_message_set_auto_start } ,
+	{ "set_no_reply", bind_dbus_message_set_no_reply } ,
 	{ 0x0, 0x0 },
 };
 

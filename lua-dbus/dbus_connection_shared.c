@@ -170,8 +170,15 @@ int bind_dbus_connection_borrow_message( lua_State * const _L)
 	utils_check_nargs( _L, 1);
 	DBusConnection * const connection = extract_dbus_connection_pointer( _L, 1, -1);
 	DBusMessage * const message = dbus_connection_borrow_message( connection);
-	push_dbus_message( _L, message);
-	return 1;
+	if( message == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, message);
+	}
 }
 
 //################################################################################
@@ -192,6 +199,24 @@ int bind_dbus_connection_flush( lua_State * const _L)
 	DBusConnection * const connection = extract_dbus_connection_pointer( _L, 1, -1);
 	dbus_connection_flush( connection);
 	return 0;
+}
+
+//################################################################################
+
+int bind_dbus_connection_get_dispatch_status( lua_State * const _L)
+{
+	utils_check_nargs( _L, 1);
+	DBusConnection * const connection = extract_dbus_connection_pointer( _L, 1, -1);
+	DBusDispatchStatus const status = dbus_connection_get_dispatch_status( connection);
+	char const * string = 0x0;
+	switch( status)
+	{
+		case DBUS_DISPATCH_DATA_REMAINS: string = "DBUS_DISPATCH_DATA_REMAINS"; break;
+		case DBUS_DISPATCH_COMPLETE: string = "DBUS_DISPATCH_COMPLETE"; break;
+		case DBUS_DISPATCH_NEED_MEMORY: string = "DBUS_DISPATCH_NEED_MEMORY"; break;
+	}
+	lua_pushstring( _L, string);
+	return 1;
 }
 
 //################################################################################
@@ -235,6 +260,24 @@ int bind_dbus_connection_get_server_id( lua_State * const _L)
 		return 0 ;
 	lua_pushstring( _L, id);
 	return 1;
+}
+
+//################################################################################
+
+int bind_dbus_connection_pop_message( lua_State * const _L)
+{
+	utils_check_nargs( _L, 1);
+	DBusConnection * const connection = extract_dbus_connection_pointer( _L, 1, -1);
+	DBusMessage * const message = dbus_connection_pop_message( connection);
+	if( message == 0x0)
+	{
+		lua_pushnil( _L);
+		return 1;
+	}
+	else
+	{
+		return push_dbus_message( _L, message);
+	}
 }
 
 //################################################################################
@@ -317,6 +360,17 @@ int bind_dbus_connection_remove_filter( lua_State * const _L)
 
 //################################################################################
 
+int bind_dbus_connection_return_message( lua_State * const _L)
+{
+	utils_check_nargs( _L, 2);
+	DBusConnection * const connection = extract_dbus_connection_pointer( _L, 1, -1);
+	DBusMessage * const message = cast_to_dbus_message( _L, 2);
+	dbus_connection_return_message( connection, message);
+	return 0;
+}
+
+//################################################################################
+
 int bind_dbus_connection_send( lua_State * const _L)
 {
 	utils_check_nargs( _L, 2);
@@ -346,13 +400,16 @@ luaL_Reg gSharedConnectionMeta[] =
 	{ "borrow_message", bind_dbus_connection_borrow_message },
 	{ "dispatch", bind_dbus_connection_dispatch },
 	{ "flush", bind_dbus_connection_flush },
+	{ "get_dispatch_status", bind_dbus_connection_get_dispatch_status },
 	{ "get_is_connected", bind_dbus_connection_get_is_connected },
 	{ "get_is_authenticated", bind_dbus_connection_get_is_authenticated },
 	{ "get_is_anonymous", bind_dbus_connection_get_is_anonymous },
 	{ "get_server_id", bind_dbus_connection_get_server_id },
+	{ "pop_message", bind_dbus_connection_pop_message },
 	{ "read_write", bind_dbus_connection_read_write },
 	{ "read_write_dispatch", bind_dbus_connection_read_write_dispatch },
 	{ "remove_filter", bind_dbus_connection_remove_filter },
+	{ "return_message", bind_dbus_connection_return_message },
 	{ "send", bind_dbus_connection_send },
 	{ "steal_borrowed_message", bind_dbus_connection_steal_borrowed_message },
 	{ 0x0, 0x0 },
